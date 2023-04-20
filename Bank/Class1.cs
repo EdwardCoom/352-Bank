@@ -11,6 +11,11 @@ namespace BankAccountNS
     /// </summary>  
     public class BankAccount
     {
+        // class under test  
+        public const string DebitAmountExceedsBalanceMessage = "Debit amount exceeds balance"; // added message
+        public const string DebitAmountLessThanZeroMessage = "Debit amount less than zero";    // added message
+
+
         private string m_customerName;
 
         private double m_balance;
@@ -39,6 +44,7 @@ namespace BankAccountNS
 
         public void Debit(double amount)
         {
+
             if (m_frozen)
             {
                 throw new Exception("Account frozen");

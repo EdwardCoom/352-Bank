@@ -7,11 +7,6 @@ namespace BankTest
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
-
         // unit test code  
         [TestMethod]
         public void Debit_WithValidAmount_UpdatesBalance()
