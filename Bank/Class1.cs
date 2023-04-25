@@ -14,6 +14,10 @@ namespace BankAccountNS
         // class under test  
         public const string DebitAmountExceedsBalanceMessage = "Debit amount exceeds balance"; // added message
         public const string DebitAmountLessThanZeroMessage = "Debit amount less than zero";    // added message
+        
+        public const string AccountFrozenMessage = "Account is currently frozen";
+
+        public const string CreditAmountLessThanZeroMessage = "Credit amount less than zero";
 
 
         private string m_customerName;
@@ -52,12 +56,12 @@ namespace BankAccountNS
 
             if (amount > m_balance)
             {
-                throw new ArgumentOutOfRangeException("amount");
+                throw new ArgumentOutOfRangeException("amount", amount, DebitAmountExceedsBalanceMessage);
             }
 
             if (amount < 0)
             {
-                throw new ArgumentOutOfRangeException("amount");
+                throw new ArgumentOutOfRangeException("amount", amount, DebitAmountLessThanZeroMessage);
             }
 
             m_balance -= amount; // intentionally incorrect code was "+=", I changed to "-="  
@@ -67,12 +71,12 @@ namespace BankAccountNS
         {
             if (m_frozen)
             {
-                throw new Exception("Account frozen");
+                throw new Exception("Account is currently frozen");
             }
 
             if (amount < 0)
             {
-                throw new ArgumentOutOfRangeException("amount");
+                throw new ArgumentOutOfRangeException("amount", amount, CreditAmountLessThanZeroMessage);
             }
 
             m_balance += amount;
